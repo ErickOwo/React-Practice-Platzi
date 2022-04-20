@@ -4,6 +4,10 @@
     padding: 0 24px;
     border-bottom: 1px solid var(--very-light-pink);
     user-select: none;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    top: 0;
   }
   .menu {
     display: none;
