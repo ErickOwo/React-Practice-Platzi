@@ -1,9 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserWebpackPlugin = require("terser-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 
 module.exports = {
   entry: "./src/index.js",
@@ -13,7 +11,8 @@ module.exports = {
     publicPath: "/",
     assetModuleFilename: "assets/images/[hash][ext][query]"
   },
-  mode: "production",
+  mode: "development",
+  devtool: "source-map",
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
@@ -52,20 +51,20 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      inject: true,
       template: "./public/index.html",
       filename: "./index.html"
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css"
-    }),
-    new CleanWebpackPlugin()
+    })
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin(),
-      new TerserWebpackPlugin()
-    ]
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist")
+    },
+    compress: true,
+    port: 3005,
+    open: true,
+    historyApiFallback: true
   }
 };

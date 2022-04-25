@@ -26,9 +26,9 @@ const Login = ()=> {
           <label htmlFor="email" className="label">
             Email address
           </label>
-          <input type="text" name="email" placeholder="platzi@example.cm" className="input input-email" />
+          <input type="email" name="email" placeholder="platzi@example.cm" className="input input-email" autoComplete="off" />
 
-          <label htmlFor="password" className="label">
+          <label htmlFor="password" className="label" autoComplete="off">
             Password
           </label>
           <input type="password" name="password" placeholder="*********" className="input input-password" />
