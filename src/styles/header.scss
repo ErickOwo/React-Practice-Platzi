@@ -13,8 +13,11 @@ nav {
 .menu {
   display: none;
 }
-
 .nav-logo {
+  margin-top: 20px;
+  user-select: none;
+}
+.nav-logo-img {
   width: 100px;
   cursor: pointer;
 }

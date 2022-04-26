@@ -2,10 +2,10 @@ import React from "react";
 import "@styles/mobile-menu.scss"
 import iconMenu from "@icons/icon_menu.svg";
 
-const MobileMenu = ( { handleToggleMenu } )=>{
+const MobileMenu = ( { handleToggleMenu, styleMenu, styleOverlay } )=>{
   return(
-    <div className="overlay">
-      <div className="mobile-menu">
+    <div className="overlay" style={{animation: styleOverlay}}>
+      <div className="mobile-menu" style={{animation: styleMenu}}>
         <img src={iconMenu} className={"icon-menu"} onClick={handleToggleMenu} />
         <ul>
           <li>

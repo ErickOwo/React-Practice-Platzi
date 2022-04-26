@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
+import ProductContext from "../context/ProductsContext";
 import iconClose from "@icons/icon_close.png"
 import AppContext from "../context/AppContext"
 
 const OrderItem = ({ product })=>{
   const { removeFromCart } = useContext(AppContext);
+  const { handleAdd } = useContext(ProductContext); 
+
   const handleRemove = ()=>{
     removeFromCart(product);
+    handleAdd(product.id);
   };
   return(
     <div className="shopping-cart">

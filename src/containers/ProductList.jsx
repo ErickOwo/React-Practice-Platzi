@@ -1,21 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
+import ProductsContext from "../context/ProductsContext";
 import ProductItem from "../components/ProductItem";
 import "../styles/orders.scss"
-import useGetProducts from "../hooks/useGetProducts";
-
-const API = "https://api.escuelajs.co/api/v1/products?limit=58&offset=1";
 
 const ProductList = ()=>{
-  const products = useGetProducts(API);
+  const {products} = useContext(ProductsContext); 
 
   return(
     <section className="main-container">
       <div className="cards-container">
+
         {
           products.map(product=>(
           <ProductItem 
             product = {product}
             key = {product.id}
+            added = {product.added}
           />
           )
         )}

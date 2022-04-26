@@ -12,24 +12,44 @@ const Header =()=>{
   const [toggle, setToggle] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [animationMenu, setAnimationMenu] = useState(null);
+  const [animationOverlay, setAnimationOverlay] = useState(null);
 
   const { state } = useContext(AppContext);
 
   const handleToggleMenu = ()=>{
-    setToggleMenu(!toggleMenu);
+    if(!toggleMenu){
+      setAnimationMenu("openNav 1s forwards");
+      setAnimationOverlay("displayOverlay 1s forwards")
+      setToggleMenu(!toggleMenu);
+    }
+    else{
+      setAnimationMenu("closeNav 1s forwards");
+      setAnimationOverlay("removeOverlay 1s forwards");
+      setTimeout(()=>{
+        setToggleMenu(!toggleMenu);
+      },1000);
+    }
   }
 
   const handleToggle = ()=>{
     setToggle(!toggle);
+    if(toggleOrders) setToggleOrders(!toggleOrders);
   }
 
   const handleToggleOrders = ()=>{
     setToggleOrders(!toggleOrders);
+    if(toggle) setToggle(!toggle);
   }
 
   return(
     <>
-      {toggleMenu && <MobileMenu handleToggleMenu={handleToggleMenu} />}
+      {
+        toggleMenu && <MobileMenu 
+        handleToggleMenu={handleToggleMenu} 
+        styleMenu={animationMenu} 
+        styleOverlay={animationOverlay} />
+      }
       <nav>
         <img 
           onClick={handleToggleMenu} 
@@ -37,8 +57,9 @@ const Header =()=>{
           alt="menu" 
           className="menu" />
         <div className="navbar-left">
-          <img src={logoYardSale} alt="logo" className="nav-logo" />
-
+          <a href="/" className="nav-logo">
+            <img src={logoYardSale} alt="logo" className="nav-logo-img" />
+          </a>
           <ul>
             <li>
               <a href="/">All</a>

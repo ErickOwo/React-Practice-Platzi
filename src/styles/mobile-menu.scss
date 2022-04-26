@@ -64,7 +64,7 @@
 @keyframes openNav {
   0%{
       background: #fff0;
-      left: -69%;
+      left: -60%;
   }
   100%{
       background: #ffff;
@@ -73,7 +73,7 @@
 }
 @keyframes removeOverlay {
   0%{
-      background-color: #262626bc;
+      background-color: #2626265c;
   }
   100%{
       background-color: #26262600;
@@ -86,7 +86,7 @@
   }
   100%{
       background: #fff0;
-      left: -69%;
+      left: -60%;
   }
 }
 @media only screen and (max-width: 640px) {

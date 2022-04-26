@@ -1,17 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import cardIconAdd from "@icons/bt_add_to_cart.svg";
 import cardIconAdded from "@icons/bt_added_to_cart.svg"
 import AppContext from "../context/AppContext";
+import ProductsContext from "../context/ProductsContext"
 
-const ProductItem = ({ product })=>{
-  const [ added, setAdded ] = useState(false);
-  const { addToCart } = useContext(AppContext);
+const ProductItem = ({ product, added })=>{
+  const { addToCart, removeFromCart } = useContext(AppContext);
+  const { handleAdd } = useContext(ProductsContext);
 
-  const handleClick = () =>{
-    addToCart(product);
-  };
-
-  const handleAddIcon = ()=> setAdded(!added);
+  const handleClickCart = () =>{
+    if(!added) addToCart(product);
+    else removeFromCart(product);
+  }
 
   return(
     <div className="product-card">
@@ -21,8 +21,8 @@ const ProductItem = ({ product })=>{
           <p>${product.price}</p>
           <p>{product.title}</p>
         </div>
-        <figure onClick={handleClick}>
-          <img src={added ? cardIconAdded : cardIconAdd} alt="" onClick={ handleAddIcon } />
+        <figure onClick={ handleClickCart }>
+          <img src={added ? cardIconAdded : cardIconAdd} alt="" onClick={()=> {handleAdd(product.id); console.log(product)}}/>
         </figure>
       </div>
     </div>
