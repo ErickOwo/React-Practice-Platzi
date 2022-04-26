@@ -16,7 +16,7 @@ import CheckOut from "../pages/CheckOut";
 const App = ()=>{
   const initialState = useInitialState();
   return(
-    <AppContext.Provider value={initialState}>
+    <AppContext.Provider  value={initialState}>
       <BrowserRouter>
         <Layout>
           <Routes>

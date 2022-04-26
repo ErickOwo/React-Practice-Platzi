@@ -4,7 +4,7 @@ import OrderItem from "../components/OrderItem";
 import iconArrow from "@icons/flechita.svg";
 import "@styles/my-order.scss";
 
-const MyOrder = ()=>{
+const MyOrder = ({ closeToggleOrders })=>{
   const { state } = useContext(AppContext);
 
   const totalAdded = ()=>{
@@ -16,7 +16,7 @@ const MyOrder = ()=>{
   return( 
     <aside className="product-detail">
     <div className="title-container">
-      <img src={iconArrow} alt="arrow" />
+      <img src={iconArrow} alt="arrow" onClick={closeToggleOrders} />
       <p className="title">My order</p>
     </div>
     <div className="my-order-content">
